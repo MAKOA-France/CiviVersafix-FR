@@ -1,5 +1,4 @@
-# mjcomosaico
-
+# MJCOMosaico
 Customised Versafix-1 Mosaico template
 
 ## Overview
@@ -40,3 +39,12 @@ Adds the following new/changed blocks to the Mosaico Versafix-1 template:
 6. Double Text block
 
 ![Double Text Block](edres/doubleTextBlock.png?raw=true "Double Text Block")
+
+## Installation
+
+1. Download and extract to a folder e.g: mjcomosaico or Git Clone
+2. Place in your mosaico_tpl folder (create this folder in your CiviCRM files directory, if it doesn't exist)
+
+**CiviCRM Files Directory:**
+
+**Drupal** sites/default/files/civicrm
