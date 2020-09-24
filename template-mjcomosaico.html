@@ -106,8 +106,8 @@
       titleVisible { label: Show Title; extend: visible; }
       buttonVisible { label: Show Button; extend: visible; }
       imageVisible { label: Show Image; extend: visible; }
-      imageAbove { label: Image Above; extend: visible;}
-      imageBelow { label: Image Below; extend: visible;}
+      imageAboveVisible { label: Image Above; extend: visible;}
+      imageBelowVisible { label: Image Below; extend: visible;}
 
       contentTheme { label: Main Style; }
       contentTheme:preview { -ko-background-color: @[backgroundColor] }
@@ -176,7 +176,7 @@
       centeredTextBlock { label: Centered Text Block; properties: backgroundColor longTextStyle longText; theme: contentTheme}
       doubleTextBlock { label: 2 Columns Text Block; properties: backgroundColor longTextStyle leftLongText rightLongText; theme: contentTheme}
 
-      singleArticleBlock { label: Image/Text Block; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true imageAbove=true imageBelow=false titleTextStyle longTextStyle buttonStyle  image  longText buttonLink;theme: contentTheme}
+      singleArticleBlock { label: Image/Text Block; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true imageAboveVisible=true imageBelowVisible=false titleTextStyle longTextStyle buttonStyle  image  longText buttonLink;theme: contentTheme}
 
       doubleArticleBlock { label: 2 Columns Block; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true titleTextStyle longTextStyle buttonStyle  leftImage  leftLongText leftButtonLink rightImage  rightLongText rightButtonLink; theme: contentTheme}
 
@@ -670,7 +670,7 @@
         <div class="oldwebkit">
         <table width="700" border="0" cellpadding="0" cellspacing="18" class="vb-container fullpad" bgcolor="#ffffff"
           style="width: 100%; max-width: 700px; background-color: #ffffff; -ko-attr-bgcolor: @backgroundColor; -ko-background-color: @backgroundColor;">
-          <tr data-ko-display="imageVisible && imageAbove">
+          <tr data-ko-display="imageVisible && imageAboveVisible">
             <td width="100%" valign="top" align="left" class="links-color">
               <a data-ko-link="image.url" href="">
                 <img data-ko-editable="image.src" border="0" hspace="0" vspace="0" width="664" data-ko-placeholder-height="200"
@@ -720,7 +720,7 @@
               </td>
             </tr>
           </table></td></tr>
-          <tr data-ko-display="imageVisible && imageBelow">
+          <tr data-ko-display="imageVisible && imageBelowVisible">
             <td width="100%" valign="top" align="left" class="links-color">
               <a data-ko-link="image.url" href="">
                 <img data-ko-editable="image.src" border="0" hspace="0" vspace="0" width="664" data-ko-placeholder-height="200"
