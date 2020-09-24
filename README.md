@@ -1,17 +1,13 @@
-# MJCOMosaico
-Customised Versafix-1 Mosaico template
+# CiviVersafix
+An expanded/customised Versafix-1 Mosaico template for CiviCRM.
 
 ## Overview
 
 This is our customised fork of the Mosaico Versafix-1 template including new blocks as requested by our clients.
 
-**Note:** The official home of this extension is https://lab.civicrm.org/MikeyMJCO/mjcomosaico - this is where issues should be raised. You can clone the extension from either:
+**Note:** The official home of this extension is https://lab.civicrm.org/MikeyMJCO/CiviVersafix - this is where issues should be raised. You can clone the extension from:
 
-* https://lab.civicrm.org/MikeyMJCO/mjcomosaico.git
-
-or
-
-* https://lab.mjco.uk/CiviCRM/mjcomosaico.git
+* https://lab.civicrm.org/MikeyMJCO/CiviVersafix.git
 
 ## More Blocks!
 
@@ -47,9 +43,10 @@ Adds the following new/changed blocks to the Mosaico Versafix-1 template:
 
 ## Installation
 
-1. Download and extract to a folder e.g: mjcomosaico or Git Clone
+1. Download and extract to a folder e.g: CiviVersafix or Git Clone
 2. Place in your mosaico_tpl folder (create this folder in your CiviCRM files directory, if it doesn't exist)
 
 **CiviCRM Files Directory:**
 
 **Drupal** sites/default/files/civicrm
+**Wordpress** wp-content/uploads/civicrm
