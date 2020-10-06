@@ -143,7 +143,6 @@
 
       socialBlock fbVisible { label: Facebook; }
       socialBlock twVisible { label: Twitter }
-      socialBlock ggVisible { label: Google+ }
       socialBlock inVisible { label: LinkedIn }
       socialBlock flVisible { label: Flickr }
       socialBlock viVisible { label: Vimeo }
@@ -152,7 +151,6 @@
       socialBlock youVisible { label: YouTube }
       socialBlock fbUrl { label: Facebook Link}
       socialBlock twUrl { label: Twitter Link}
-      socialBlock ggUrl { label: Google+ Link}
       socialBlock inUrl { label: LinkedIn Link}
       socialBlock flUrl { label: Flickr Link}
       socialBlock viUrl { label: Vimeo Link}
@@ -161,7 +159,7 @@
       socialBlock youUrl { label: YouTube Link}
       socialBlock {
         label: Social Block;
-        properties: socialIconType=colors fbVisible=true fbUrl twVisible=true twUrl ggVisible=true ggUrl webVisible=false webUrl inVisible=false inUrl flVisible=false flUrl viVisible=false viUrl instVisible=false instUrl youVisible=false youUrl backgroundColor;
+        properties: socialIconType=colors fbVisible=true fbUrl twVisible=true twUrl webVisible=false webUrl inVisible=false inUrl flVisible=false flUrl viVisible=false viUrl instVisible=false instUrl youVisible=false youUrl backgroundColor;
         variant:socialIconType;
         theme: frameTheme
       }
@@ -1637,10 +1635,6 @@
                           <a data-ko-display="twVisible" href="" style="-ko-attr-href: @twUrl">
                             <img src="img/social_def/twitter_ok.png" alt="Twitter" border="0" class="socialIcon" />
                           </a>
-                          <span data-ko-display="ggVisible" data-ko-wrap="false">&nbsp;</span>
-                          <a data-ko-display="ggVisible" href="" style="-ko-attr-href: @ggUrl">
-                            <img src="img/social_def/google+_ok.png" alt="Google+" border="0" class="socialIcon" />
-                          </a>
                           <span data-ko-display="webVisible" data-ko-wrap="false" style="display: none">&nbsp;</span>
                           <a data-ko-display="webVisible" href="" style="-ko-attr-href: @webUrl; display: none">
                             <img src="img/social_def/web_ok.png" alt="Web" border="0" class="socialIcon" />
@@ -1666,7 +1660,7 @@
                             <img src="img/social_def/youtube_ok.png" alt="Youtube" border="0" class="socialIcon" />
                           </a>
                         </td>
-                        <td align="right" valign="middle" class="links-color socialLinks mobile-textcenter" data-ko-display="socialIconType eq 'bw'"
+                        <td align="center" valign="middle" class="links-color socialLinks mobile-textcenter" data-ko-display="socialIconType eq 'bw'"
                           style="display: none">
                           <span data-ko-display="fbVisible" data-ko-wrap="false">&nbsp;</span>
                           <a data-ko-display="fbVisible" href="" style="-ko-attr-href: @fbUrl">
@@ -1675,10 +1669,6 @@
                           <span data-ko-display="twVisible" data-ko-wrap="false">&nbsp;</span>
                           <a data-ko-display="twVisible" href="" style="-ko-attr-href: @twUrl">
                             <img src="img/social_def/twitter_bw_ok.png" alt="Twitter" border="0" class="socialIcon" />
-                          </a>
-                          <span data-ko-display="ggVisible" data-ko-wrap="false">&nbsp;</span>
-                          <a data-ko-display="ggVisible" href="" style="-ko-attr-href: @ggUrl">
-                            <img src="img/social_def/google+_bw_ok.png" alt="Google+" border="0" class="socialIcon" />
                           </a>
                           <span data-ko-display="webVisible" data-ko-wrap="false" style="display: none">&nbsp;</span>
                           <a data-ko-display="webVisible" href="" style="-ko-attr-href: @webUrl; display: none">
