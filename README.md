@@ -45,6 +45,7 @@ Adds the following new/changed blocks to the Mosaico Versafix-1 template:
 
 1. Download and extract to a folder e.g: CiviVersafix or Git Clone
 2. Place in your mosaico_tpl folder (create this folder in your CiviCRM files directory, if it doesn't exist)
+3. **Important:** The folder MUST be named `CiviVersafix` if you change the folder name you should also ensure the html file is named appropriately as `template-FOLDERNAME.html`.
 
 **CiviCRM Files Directory:**
 
