@@ -1,19 +1,19 @@
 # CiviVersafix
-An expanded/customised Versafix-1 Mosaico template for CiviCRM.
+Une version personnalisée du Modèle de Base Versafix-1 de Mosaico pour CiviCRM (traduit en français)
 
-## Overview
+## En quelques mots
 
-This is our customised fork of the Mosaico Versafix-1 template including new blocks as requested by our clients.
+C'est un fork en français de https://lab.civicrm.org/homotechsual/CiviVersafix qui est elle même un fork de the Mosaico Versafix-1 template including new blocks as requested by our clients.
 
-**Note:** The official home of this extension is https://lab.civicrm.org/MikeyMJCO/CiviVersafix - this is where issues should be raised. You can clone the extension from:
+**Note:** The official home of this extension is https://lab.civicrm.org/homotechsual/CiviVersafix - this is where issues should be raised. You can clone the extension from:
 
-* https://lab.civicrm.org/MikeyMJCO/CiviVersafix.git
+* https://lab.civicrm.org/homotechsual/CiviVersafix
 
-## More Blocks!
+## Davantage de blocs !
 
 We're happy to add blocks - assuming we can see a use-case for them! Open an issue to request a block - please provide as much indication as you can as to how the block should look and what, if any, configuration should be possible :-).
 
-## What's changed?
+## Qu'est ce qui a changé ?
 
 Adds the following new/changed blocks to the Mosaico Versafix-1 template:
 
@@ -43,9 +43,11 @@ Adds the following new/changed blocks to the Mosaico Versafix-1 template:
 
 ## Installation
 
-1. Download and extract to a folder e.g: CiviVersafix or Git Clone
-2. Place in your mosaico_tpl folder (create this folder in your CiviCRM files directory, if it doesn't exist)
-3. **Important:** The folder MUST be named `CiviVersafix` if you change the folder name you should also ensure the html file is named appropriately as `template-FOLDERNAME.html`.
+Ceci n'est pas une extension Civi comme les autres. Il ne faut pas l'installer dans civicrm/ext.
+
+1. Télécharger et extraire ou Git Clone vers un dossier nommé `CiviVersafix`
+2. Placer ce dossier dans le dossier `mosaico_tpl` (cela doit donner au final `/files/civicrm/mosaico_tpl/CiviVersafix`).
+3. **Important:** Le dossier DOIT être nommé `CiviVersafix` si vous changez le nom du dossier, assurez vous que le nom du fichier html soit aussi nommé comme ceci  `template-NOMDUNOUVEAUDOSSIER.html`.
 
 **CiviCRM Files Directory:**
 
