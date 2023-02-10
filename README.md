@@ -5,9 +5,7 @@ Une version personnalisée du Modèle de Base Versafix-1 de Mosaico pour CiviCRM
 
 C'est un fork en français de https://lab.civicrm.org/homotechsual/CiviVersafix qui est elle même un fork de  Mosaico Versafix-1 template, et inclut des nouveaux blocs.
 
-**Note:** Le depot officiel de cette extension est https://lab.civicrm.org/homotechsual/CiviVersafix - c'est là que les problemes/issues devraient être soumis.
-
-Vous pouvez cloner cette extension en français depuis :
+Vous pouvez cloner ce fork en français depuis :
 
 * https://github.com/MAKOA-France/CiviVersafix-FR
 
@@ -56,3 +54,16 @@ Ceci n'est pas une extension Civi comme les autres. Il ne faut pas l'installer d
 **Drupal** sites/default/files/civicrm
 
 **Wordpress** wp-content/uploads/civicrm
+
+## Assistance et Maintenance
+
+**Note:** Le depot officiel de cette extension est https://lab.civicrm.org/homotechsual/CiviVersafix - c'est là que les problemes/issues devraient être soumis en priorité.
+
+La traduction du modèle a d'abord été établie par AllInAppli.
+
+Cette extension est maintenue avec l'aide de la communauté CiviCRM www.civicrm.org par :
+
+Makoa - www.makoa.fr
+
+Nous proposons de l'assistance et du développement spécifique facturés.
+Si vous rencontrez un problème vous pouvez aussi nous faire une demande d'analyse (facturée 2 heures minimum) via https://support.makoa.fr.
