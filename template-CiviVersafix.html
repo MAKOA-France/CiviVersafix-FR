@@ -2,6 +2,8 @@
  * Project: MJCO Mosaico
  * File: template-mjcomosaico.html
  * Author: 'Mikey O'Toole' <mikey@mjco.uk>
+ * modified by : Makoa
+ * Date: 2021 and 2023-feb-10
  * License: GPLv3
 //-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -14,111 +16,104 @@
   <style type="text/css">
     @supports -ko-blockdefs {
       id { widget: id }
-      size { label: Size; widget: select; options: 8|9|10|11|12|13|14|15|16|18|20|22|25|28|31; }
-      visible { label: Visible?; widget: boolean }
-      color { label: Color; widget: color }
+      size { label: Taille; widget: select; options: 8|9|10|11|12|13|14|15|16|18|20|22|25|28|31; }
+      visible { label: Visible ?; widget: boolean }
+      color { label: Couleur; widget: color }
       radius {
-        label: Corner Radius;
+        label: Rayon angle;
         widget: integer;
         max: 20;
-        help: Attention - this property is not supported on all email clients (i.e. Outlook);
+        help: "Attention - cette propriété n'est pas supportée sur tous les clients de messagerie (comme Outlook)";
       }
-      face { label: Font; widget: select; options: Arial, Helvetica, sans-serif=Arial|Arial Black, Arial Black, Gadget, sans-serif=Arial Black|Comic Sans MS, Comic Sans MS5, cursive=Comic Sans|Courier New, Courier New, monospace=Courier|Georgia, serif=Georgia|Impact, sans-serif=Impact|Lucida Console, Monaco, monospace=Lucida Console|Lucida Sans Unicode, Lucida Grande, sans-serif=Lucida Sans Unicode|Times New Roman, Times, serif=Times New Roman|Verdana, Geneva, sans-serif=Verdana}
-      decoration { label: Decoration; widget: select; options: none=None|underline=Underline }
-      linksColor { label: Link Color; extend: color }
-      linksDecoration { label: Underlined Links?; extend: decoration }
-      buttonColor { label: Button Color; extend: color }
-      text { label: Paragraph; widget: text }
-      url { label: Link; widget: url }
+      face { label: Police; widget: select; options: Arial, Helvetica, sans-serif=Arial|Arial Black, Arial Black, Gadget, sans-serif=Arial Black|Comic Sans MS, Comic Sans MS5, cursive=Comic Sans|Courier New, Courier New, monospace=Courier|Georgia, serif=Georgia|Impact, sans-serif=Impact|Lucida Console, Monaco, monospace=Lucida Console|Lucida Sans Unicode, Lucida Grande, sans-serif=Lucida Sans Unicode|Times New Roman, Times, serif=Times New Roman|Verdana, Geneva, sans-serif=Verdana}
+      decoration { label: Décoration; widget: select; options: none=Aucun|underline=Sous-ligné }
+      linksColor { label: Couleur du lien; extend: color }
+      linksDecoration { label: Liens sous-lignés ?; extend: decoration }
+      buttonColor { label: Couleur du bouton; extend: color }
+      text { label: Paragraphe; widget: text }
+      url { label: Lien; widget: url }
       src { label: Image; widget: src }
-      hrWidth { label: Width; widget: select; options:10|20|30|40|50|60|70|80|90|100; }
-      hrHeight { label: Line height; widget: integer; max: 80; }
+      hrWidth { label: Largeur de la ligne; widget: select; options:10|20|30|40|50|60|70|80|90|100; }
+      hrHeight { label: Hauteur de la ligne; widget: integer; max: 80; }
 
-      height { label: Height; widget: integer }
-      imageHeight { label: Image Height; extend: height; }
-      spacerSize { label: Height; widget: integer; max: 90; min: 4; }
-      align { label: Alignment; widget: select; options:left=Left|right=Right|center=Center}
+      height { label: Hauteur; widget: integer }
+      imageHeight { label: Hauteur image; extend: height; }
+      spacerSize { label: Hauteur; widget: integer; max: 90; min: 4; }
+      align { label: Alignement; widget: select; options:left=Gauche|right=Droite|center=Centre}
       alt {
-        label: Alternative Text;
+        label: Texte alternatif;
         widget: text;
-        help: Alternative text will be shown on email clients that does not download image automatically;
+        help: "Un texte alternatif sera affiché sur les clients de messagerie qui ne téléchargent pas automatiquement l'image";
       }
       sponsor { label: Sponsor; properties: visible=true src url alt; category: hidden }
-      titleText {label:Title Text;category: hidden;}
-      gutterVisible { label: Show Gutter; extend: visible }
-      socialIconType { label: Icon Version;widget: select; options:bw=Black and White|colors=Colors; }
-
+      titleText {label:Texte du titre;category: hidden;}
+      gutterVisible { label: Afficher la goutière; extend: visible }
+      socialIconType { label: Version icône;widget: select; options:bw=Noir et blanc|colors=Couleur; }
       preheaderLinkOption {
-        label: Unsubscribe Link;
+        label: Lien de désinscription;
         widget: select;
-        options: [profile_link]=Profile|[unsubscribe_link]=Unsubscribe|none=None;
-        help: If -None- is selected, preHeader text will be shown;
+        options: [profile_link]=Profil|[unsubscribe_link]=Se désinscrire|none=Aucun;
+        help: Si -Aucun- est sélectionné, le texte de pré-en-tête sera affiché;
       }
-
-      hrStyle { label: Separator Style;properties:color hrWidth hrHeight; }
+      hrStyle { label: Style du séparateur;properties:color hrWidth hrHeight; }
       hrStyle:preview { height: 200%; width: 200%; bottom: 20px; -ko-border-bottom: @[hrHeight]px solid @color; }
-      preheaderVisible { label: Show Preheader; extend: visible; help: Preheader block is the first one on the top of the page. It contains web version link and optionally unsubscribe link or a preheader text that will be shown as a preview on some email clients; }
-
+      preheaderVisible { label: Afficher le pré-en-tête; extend: visible; help: Le bloc de pré-en-tête est le premier en haut de la page. Il contient un lien vers la version web et, éventuellement, un lien de désinscription ou un texte de pré-en-tête qui sera affiché en avant-première sur certains clients de messagerie; }
       /* content types */
-      blocks { label: Blocks; properties: blocks[]; }
-      link { label: Link; properties: text url }
+      blocks { label: Blocs; properties: blocks[]; }
+      link { label: Lien; properties: text url }
       image { label: Image; properties: src url alt }
-      backgroundColor { label: Background Color; extend: color }
-      buttonLink { label: Button; extend: link }
-
+      backgroundColor { label: Couleur arrière-plan; extend: color }
+      buttonLink { label: Bouton; extend: link }
       /* texts and links */
-      textStyle { label: Text; properties: face color size }
+      textStyle { label: Texte; properties: face color size }
       textStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
-      linkStyle { label: Link; properties: face color size decoration=none }
+      linkStyle { label: Lien; properties: face color size decoration=none }
       linkStyle:preview { -ko-bind-text: @['Link']; -ko-font-size: @[size]px; -ko-font-family: @face; -ko-color: @color; -ko-text-decoration: @[decoration] }
-      longTextStyle { label: Paragraph; properties: face color size linksColor   }
+      longTextStyle { label: Paragraphe; properties: face color size linksColor   }
       longTextStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
-      bigButtonStyle { label: Big Button; extend: buttonStyle }
-      titleTextStyle { label: Title; extend: textStyle }
+      bigButtonStyle { label: Gros bouton; extend: buttonStyle }
+      titleTextStyle { label: Titre; extend: textStyle }
       /* background */
-      externalBackgroundColor { label: External Background; extend: color }
-
-      externalTextStyle { label: Alternative Text; extend: textStyle }
+      externalBackgroundColor { label: Arrière-plan extérieur; extend: color }
+      externalTextStyle { label: Texte alternatif; extend: textStyle }
       externalTextStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
-
-      bigTitleStyle { label: Title; properties: face color size align}
+      bigTitleStyle { label: Titre; properties: face color size align}
       bigTitleStyle:preview { -ko-bind-text: @['AaZz']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; }
       /* buttons */
-      buttonStyle color { label: Text Color; extend: color }
-      buttonStyle size { label: Text Size; extend: size }
-      buttonStyle { label: Button; properties: face color size buttonColor radius }
+      buttonStyle color { label: Couleur du texte; extend: color }
+      buttonStyle size { label: Taille du texte; extend: size }
+      buttonStyle { label: Bouton; properties: face color size buttonColor radius }
       buttonStyle:preview { -ko-bind-text: @['Button']; -ko-font-family: @face; -ko-color: @color; -ko-font-size: @[size]px; -ko-background-color: @buttonColor; padding-left: 5px; -ko-border-radius: @[radius]px; }
-
       /* contents */
-      preheaderText {label: PreHeader Text; extend:text; help: This text will be shown on some email clients as a preview of the email contents;}
-      leftImage { label: Left Image; extend: image }
-      leftLongText { label: Left Text; extend: text }
-      leftButtonLink { label: Left Button; extend: buttonLink }
-      middleImage { label: Central Image; extend: image }
-      middleLongText { label: Central Text; extend: text }
-      middleButtonLink { label: Central Button; extend: buttonLink }
-      rightImage { label: Right Image; extend: image }
-      rightLongText { label: Right Text; extend: text }
-      rightButtonLink { label: Right Button; extend: buttonLink }
-      webversionText{ label: Web Link Text; extend: text;}
-      unsubscribeText{ label: Unsubscribe Link; extend: text;}
+      preheaderText {label: Texte du pré-en-tête; extend:text; help: Ce texte sera affiché sur certains clients de messagerie comme un aperçu du contenu du courrier électronique;}
+      leftImage { label: Image de gauche; extend: image }
+      leftLongText { label: Texte de gauche; extend: text }
+      leftButtonLink { label: Bouton de gauche; extend: buttonLink }
+      middleImage { label: Image du centre; extend: image }
+      middleLongText { label: Texte du centre; extend: text }
+      middleButtonLink { label: Bouton du centre; extend: buttonLink }
+      rightImage { label: Image de droite; extend: image }
+      rightLongText { label: Texte de droite; extend: text }
+      rightButtonLink { label: Bouton de droite; extend: buttonLink }
+      webversionText{ label: Texte du lien web; extend: text;}
+      unsubscribeText{ label: Lien de désinscription; extend: text;}
 
-      titleVisible { label: Show Title; extend: visible; }
-      buttonVisible { label: Show Button; extend: visible; }
-      imageVisible { label: Show Image; extend: visible; }
-      imageAboveVisible { label: Image Above; extend: visible;}
-      imageBelowVisible { label: Image Below; extend: visible;}
+      titleVisible { label: Afficher le titre; extend: visible; }
+      buttonVisible { label: Afficher le bouton; extend: visible; }
+      imageVisible { label: Afficher image; extend: visible; }
+      imageAboveVisible { label: Image au dessus; extend: visible;}
+      imageBelowVisible { label: Image en dessous; extend: visible;}
 
-      contentTheme { label: Main Style; }
+      contentTheme { label: Style principal; }
       contentTheme:preview { -ko-background-color: @[backgroundColor] }
-      frameTheme { label: Frame Style; }
+      frameTheme { label: Style du cadre; }
       frameTheme:preview { -ko-background-color: @[backgroundColor] }
-      template preheaderText { label: Preheader; }
+      template preheaderText { label: Avant-en-tête; }
 
-      template { label: Page; theme: frameTheme; properties:  preheaderVisible=true; version: 1.0.5; }
+      template { label: Page; theme: frameTheme ;properties:  preheaderVisible=true; version: 1.0.5; }
 
-      footerBlock unsubscribeLinkStyle { label: Unsubscribe;  }
-      footerBlock { label: Unsubscribe Block; theme: frameTheme }
+      footerBlock unsubscribeLinkStyle { label: Se désinscrire;  }
+      footerBlock { label: Désinscription Block; theme: frameTheme }
 
       buttonRow1Visible { label: Row 1 Visible; extend: visible;}
       buttonRow2Visible { label: Row 2 Visible; extend: visible;}
@@ -146,67 +141,67 @@
       socialBlock inVisible { label: LinkedIn }
       socialBlock flVisible { label: Flickr }
       socialBlock viVisible { label: Vimeo }
-      socialBlock webVisible { label: Website }
+      socialBlock webVisible { label: Site Web }
       socialBlock instVisible { label: Instagram }
       socialBlock youVisible { label: YouTube }
-      socialBlock fbUrl { label: Facebook Link}
-      socialBlock twUrl { label: Twitter Link}
-      socialBlock inUrl { label: LinkedIn Link}
-      socialBlock flUrl { label: Flickr Link}
-      socialBlock viUrl { label: Vimeo Link}
-      socialBlock webUrl { label: Website Link}
-      socialBlock instUrl { label: Instagram Link}
-      socialBlock youUrl { label: YouTube Link}
+      socialBlock fbUrl { label: Lien Facebook }
+      socialBlock twUrl { label: Lien Twitter}
+      socialBlock inUrl { label: Lien LinkedIn}
+      socialBlock flUrl { label: Lien Flickr}
+      socialBlock viUrl { label: Lien Vimeo}
+      socialBlock webUrl { label: Lien du site web}
+      socialBlock instUrl { label: Lien Instagram}
+      socialBlock youUrl { label: Lien YouTube}
       socialBlock {
-        label: Social Block;
+        label: Bloc Réseaux Sociaux;
         properties: socialIconType=colors fbVisible=true fbUrl twVisible=true twUrl webVisible=false webUrl inVisible=false inUrl flVisible=false flUrl viVisible=false viUrl instVisible=false instUrl youVisible=false youUrl backgroundColor;
         variant:socialIconType;
         theme: frameTheme
       }
 
-      preheaderBlock { label:Preheader Block;  theme: frameTheme}
+      preheaderBlock { label: Pré-en-tête;  theme: frameTheme}
 
-      sideArticleBlock imagePos {label:Image position;widget:select; options: left=Left|right=Right; }
-      sideArticleBlock imageWidth { label: Image Size; widget: select; options: 120=Small|209=Medium|258=Big; }
-      sideArticleBlock { label: Image+Text Block; properties: backgroundColor titleVisible=true buttonVisible=true imageWidth=209 imagePos=left titleTextStyle longTextStyle buttonStyle  image  longText buttonLink; variant:imagePos; theme: contentTheme }
+      sideArticleBlock imagePos {label:Position Image;widget:select; options: left=Gauche|right=Droite; }
+      sideArticleBlock imageWidth { label: Taille image; widget: select; options: 120=Petite|209=Moyenne|258=Grande; }
+      sideArticleBlock { label: Bloc Image+Texte; properties: backgroundColor titleVisible=true buttonVisible=true imageWidth=209 imagePos=left titleTextStyle longTextStyle buttonStyle  image  longText buttonLink; variant:imagePos; theme: contentTheme }
 
-      textBlock { label: Text Block; properties: backgroundColor longTextStyle longText; theme: contentTheme}
-      centeredTextBlock { label: Centered Text Block; properties: backgroundColor longTextStyle longText; theme: contentTheme}
-      doubleTextBlock { label: 2 Columns Text Block; properties: backgroundColor longTextStyle leftLongText rightLongText; theme: contentTheme}
+      textBlock { label: Bloc de texte; properties: backgroundColor longTextStyle longText; theme: contentTheme}
+      centeredTextBlock { label: Bloc Texte Centré; properties: backgroundColor longTextStyle longText; theme: contentTheme}
+      doubleTextBlock { label: Texte sur 2 colonnes; properties: backgroundColor longTextStyle leftLongText rightLongText; theme: contentTheme}
 
-      singleArticleBlock { label: Image/Text Block; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true imageAboveVisible=true imageBelowVisible=false titleTextStyle longTextStyle buttonStyle  image  longText buttonLink;theme: contentTheme}
+      singleArticleBlock { label: Bloc Image/Texte; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true imageAboveVisible=true imageBelowVisible=false titleTextStyle longTextStyle buttonStyle  image  longText buttonLink;theme: contentTheme}
 
-      doubleArticleBlock { label: 2 Columns Block; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true titleTextStyle longTextStyle buttonStyle  leftImage  leftLongText leftButtonLink rightImage  rightLongText rightButtonLink; theme: contentTheme}
+      doubleArticleBlock { label: 2 Colonnes; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true titleTextStyle longTextStyle buttonStyle  leftImage  leftLongText leftButtonLink rightImage  rightLongText rightButtonLink; theme: contentTheme}
 
-      tripleArticleBlock { label: 3 Columns Block; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true titleTextStyle longTextStyle buttonStyle  leftImage  leftLongText leftButtonLink middleImage  middleLongText middleButtonLink rightImage  rightLongText rightButtonLink; theme: contentTheme}
+      tripleArticleBlock { label: 3 Colonnes; properties: backgroundColor titleVisible=true buttonVisible=true imageVisible=true titleTextStyle longTextStyle buttonStyle  leftImage  leftLongText leftButtonLink middleImage  middleLongText middleButtonLink rightImage  rightLongText rightButtonLink; theme: contentTheme}
 
-      logoBlock imageWidth { label: Image Size; widget: select; options: 209=Small|258=Medium|350=Big; variant:imageWidth;}
-      logoBlock { label: Logo Block; properties: image imageWidth=258; variant: imageWidth; theme: contentTheme}
+      logoBlock imageWidth { label: Taille image; widget: select; options: 209=Petite|258=Moyenne|350=Grande; variant:imageWidth;}
+      logoBlock { label: Logo; properties: image imageWidth=258; variant: imageWidth; theme: contentTheme}
 
-      titleBlock { label: Title; theme: contentTheme}
+      titleBlock { label: Titre; theme: contentTheme}
 
       imageBlock longTextStyle {
-        label: Alternative Text;
-        help: Some Email Clients will show this text if automatic download of images is disabled;
+        label: Texte alternatif;
+        help: Certains clients de messagerie électronique affichent ce texte si le téléchargement automatique des images est désactivé;
       }
       imageBlock { label: Image; properties: gutterVisible=false; variant: gutterVisible; theme: contentTheme }
 
       doubleImageBlock longTextStyle {
-        label: Alternative Text;
-        help: Some Email Clients will show this text if automatic download of images is disabled;
+        label: Texte alternatif;
+        help: Certains clients de messagerie électronique affichent ce texte si le téléchargement automatique des images est désactivé;
       }
-      doubleImageBlock { label: Two Image Gallery Block; properties: gutterVisible=false; variant: gutterVisible; theme: contentTheme }
+      doubleImageBlock { label: Bloc double image; properties: gutterVisible=false; variant: gutterVisible; theme: contentTheme }
 
       tripleImageBlock longTextStyle {
-        label: Alternative Text;
-        help: Some Email Clients will show this text if automatic download of images is disabled;
+        label: Texte alternatif;
+        help: Certains clients de messagerie électronique affichent ce texte si le téléchargement automatique des images est désactivé;
       }
-      tripleImageBlock { label: Three Image Gallery Block;properties:gutterVisible=false;variant:gutterVisible; theme: contentTheme}
+      tripleImageBlock { label: Bloc triple image;properties:gutterVisible=false;variant:gutterVisible; theme: contentTheme}
 
-      buttonBlock { label: Button Block; theme: contentTheme}
-      multiButtonBlock { label: Multi Button Block; properties: backgroundColor buttonRow1Visible=true buttonRow2Visible=true buttonRow3Visible=true buttonRow4Visible=true button1Link button2Link button3Link button4Link button5Link button6Link button7Link button8Link button1Style button2Style button3Style button5Style button6Style button7Style button8Style; theme: contentTheme}
-      hrBlock { label: Separator Block;  theme: contentTheme}
-      spacerBlock { label: Spacer Block;  theme: contentTheme}
+      buttonBlock { label: Bloc bouton; theme: contentTheme}
+      multiButtonBlock { label: Bloc multi boutons; properties: backgroundColor buttonRow1Visible=true buttonRow2Visible=true buttonRow3Visible=true buttonRow4Visible=true button1Link button2Link button3Link button4Link button5Link button6Link button7Link button8Link button1Style button2Style button3Style button5Style button6Style button7Style button8Style; theme: contentTheme}
+      hrBlock { label: Bloc séparateur;  theme: contentTheme}
+      spacerBlock { label: Bloc espaceur;  theme: contentTheme}
 
       spacerBlock:preview,
       logoBlock:preview { -ko-background-color: @[externalBackgroundColor] }
@@ -477,7 +472,7 @@
                           -ko-font-size: @[linkStyle.size]px; -ko-color: @linkStyle.color; -ko-font-family: @linkStyle.face">
                           <a data-ko-display="preheaderLinkOption neq 'none'" data-ko-editable="unsubscribeText" href="[unsubscribe_link]"
                              style="text-decoration: underline; color: #3f3f3f; -ko-attr-href: @preheaderLinkOption;
-                             -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration">Unsubscribe</a>
+                             -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration">Se désinscrire</a>
                           <span data-ko-display="preheaderLinkOption eq 'none'" style="font-size: 13px;color: #3f3f3f; font-weight: normal; text-align:center;
                              font-family: Arial, Helvetica, sans-serif; -ko-font-size: @[longTextStyle.size]px; -ko-color: @longTextStyle.color;
                             -ko-font-family: @longTextStyle.face; -ko-bind-text: @preheaderText; display: none"></span>
@@ -496,7 +491,7 @@
                         -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration">
                           <a data-ko-editable="webversionText" href="[show_link]"
                           style="text-decoration: underline; color: #3f3f3f;
-                           -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration">View in your browser</a>
+                           -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration">Voir dans le navigateur</a>
                          </span>
                        </td>
                       </tr>
@@ -596,7 +591,7 @@
                         <td style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;
                           -ko-font-size: @[titleTextStyle.size]px; -ko-font-family: @titleTextStyle.face; -ko-color: @titleTextStyle.color">
                           <span style="color: #3f3f3f; -ko-color: @titleTextStyle.color" data-ko-editable="titleText">
-                          Title
+                          Titre
                           </span>
                         </td>
                       </tr>
@@ -604,7 +599,8 @@
                         <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                           -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
                           data-ko-editable="longText" class="long-text links-color">
-                          <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                          <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et Consonantia</a>, là vivent les textes aveugles.</p>
+              <p>Séparés, ils vivent dans Bookmarksgrove, sur la côte de la sémantique, un grand océan linguistique. Une petite rivière nommée Duden coule à leur place et l'alimente avec les régélialia nécessaires.</p>
                         </td>
                       </tr>
                       <tr data-ko-display="buttonVisible">
@@ -618,7 +614,7 @@
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color;">
                                 <a data-ko-editable="buttonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                                  -ko-color: @buttonStyle.color; -ko-attr-href: @buttonLink.url">BUTTON</a>
+                                  -ko-color: @buttonStyle.color; -ko-attr-href: @buttonLink.url">BOUTON</a>
                               </td>
                             </tr>
                           </table>
@@ -683,7 +679,7 @@
               <td style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;
                 -ko-font-size: @[titleTextStyle.size]px; -ko-font-family: @titleTextStyle.face; -ko-color: @titleTextStyle.color">
                 <span style="color: #3f3f3f; -ko-color: @titleTextStyle.color" data-ko-editable="text">
-               Section Title
+               Section du titre
                 </span>
               </td>
             </tr>
@@ -694,7 +690,8 @@
               <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                 -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
                 data-ko-editable="longText" class="long-text links-color">
-                <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et Consonantia</a>, là vivent les textes aveugles.</p>
+              <p>Séparés, ils vivent dans Bookmarksgrove, sur la côte de la sémantique, un grand océan linguistique. Une petite rivière nommée Duden coule à leur place et l'alimente avec les régélialia nécessaires.</p>
               </td>
             </tr>
             <tr data-ko-display="buttonVisible">
@@ -711,7 +708,7 @@
                       -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                       -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
                       <a data-ko-editable="buttonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                        -ko-color: @buttonStyle.color; -ko-attr-href: @buttonLink.url">BUTTON</a>
+                        -ko-color: @buttonStyle.color; -ko-attr-href: @buttonLink.url">BOUTON</a>
                     </td>
                   </tr>
                 </table>
@@ -752,7 +749,7 @@
               style="background-color: #ffffff; font-size: 22px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: center;
               -ko-attr-align: @bigTitleStyle.align; -ko-attr-bgcolor: @backgroundColor; -ko-background-color: @backgroundColor;
               -ko-font-size: @[bigTitleStyle.size]px; -ko-font-family: @bigTitleStyle.face; -ko-color: @bigTitleStyle.color; -ko-text-align: @bigTitleStyle.align">
-              <span data-ko-editable="text">Section Title</span>
+              <span data-ko-editable="text">Section de titre</span>
             </td>
           </tr>
         </table>
@@ -778,8 +775,8 @@
             <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
               -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
               data-ko-editable="longText" class="long-text links-color">
-              <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts.</p>
-              <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et Consonantia</a>, là vivent les textes aveugles.</p>
+              <p>Séparés, ils vivent dans Bookmarksgrove, sur la côte de la sémantique, un grand océan linguistique. Une petite rivière nommée Duden coule à leur place et l'alimente avec les régélialia nécessaires.</p>
             </td>
           </tr>
         </table>
@@ -805,8 +802,8 @@
             <td align="left" style="text-align: center; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
               -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
               data-ko-editable="longText" class="long-text links-color">
-              <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts.</p>
-              <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et Consonantia</a>, là vivent les textes aveugles.</p>
+              <p>Séparés, ils vivent dans Bookmarksgrove, sur la côte de la sémantique, un grand océan linguistique. Une petite rivière nommée Duden coule à leur place et l'alimente avec les régélialia nécessaires.</p>
             </td>
           </tr>
         </table>
@@ -840,7 +837,7 @@
                         <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                           -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
                           data-ko-editable="leftLongText" class="long-text links-color">
-                          <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts. </p>
+                         <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et Consonantia</a>, là vivent les textes aveugles.</p>
                         </td>
                       </tr>
                     </table>
@@ -854,7 +851,8 @@
                         <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                           -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
                           data-ko-editable="rightLongText" class="long-text links-color">
-                          <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts.</p>
+                        <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et
+                            Consonantia</a>, là vivent les textes aveugles.</p>
                         </td>
                       </tr>
                     </table>
@@ -913,7 +911,8 @@
                         <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                           -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
                           data-ko-editable="leftLongText" class="long-text links-color">
-                          <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts. </p>
+                        <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et
+                            Consonantia</a>, là vivent les textes aveugles.</p>
                         </td>
                       </tr>
                       <tr data-ko-display="buttonVisible">
@@ -927,7 +926,7 @@
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
                                 <a data-ko-editable="leftButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                                  -ko-color: @buttonStyle.color; -ko-attr-href: @leftButtonLink.url">BUTTON</a>
+                                  -ko-color: @buttonStyle.color; -ko-attr-href: @leftButtonLink.url">BOUTON</a>
                               </td>
                             </tr>
                           </table>
@@ -962,7 +961,8 @@
                         <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                           -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
                           data-ko-editable="middleLongText" class="long-text links-color">
-                          <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts. </p>
+                        <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et
+                            Consonantia</a>, là vivent les textes aveugles.</p>
                         </td>
                       </tr>
                       <tr data-ko-display="buttonVisible">
@@ -976,7 +976,7 @@
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
                                 <a data-ko-editable="middleButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                                  -ko-color: @buttonStyle.color; -ko-attr-href: @middleButtonLink.url">BUTTON</a>
+                                  -ko-color: @buttonStyle.color; -ko-attr-href: @middleButtonLink.url">BOUTON</a>
                               </td>
                             </tr>
                           </table>
@@ -1003,7 +1003,7 @@
                         <td style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;
                           -ko-font-size: @[titleTextStyle.size]px; -ko-font-family: @titleTextStyle.face; -ko-color: @titleTextStyle.color">
                           <span style="color: #3f3f3f; -ko-color: @titleTextStyle.color" data-ko-editable="rightTitleText">
-                         Title
+                         Titre
                           </span>
                         </td>
                       </tr>
@@ -1011,7 +1011,7 @@
                         <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                           -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
                           data-ko-editable="rightLongText" class="long-text links-color">
-                          <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts. </p>
+                          <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et Consonantia</a>, là vivent les textes aveugles.</p>
                         </td>
                       </tr>
                       <tr data-ko-display="buttonVisible">
@@ -1025,7 +1025,7 @@
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color;">
                                 <a data-ko-editable="rightButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                                  -ko-color: @buttonStyle.color; -ko-attr-href: @rightButtonLink.url">BUTTON</a>
+                                  -ko-color: @buttonStyle.color; -ko-attr-href: @rightButtonLink.url">BOUTON</a>
                               </td>
                             </tr>
                           </table>
@@ -1080,7 +1080,7 @@
                         <td style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;
                           -ko-font-size: @[titleTextStyle.size]px; -ko-font-family: @titleTextStyle.face; -ko-color: @titleTextStyle.color">
                           <span style="color: #3f3f3f; -ko-color: @titleTextStyle.color" data-ko-editable="leftTitleText">
-                          Title
+                          Titre
                           </span>
                         </td>
                       </tr>
@@ -1088,7 +1088,7 @@
                         <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                           -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
                           data-ko-editable="leftLongText" class="long-text links-color">
-                          <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts. </p>
+                          <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et Consonantia</a>, là vivent les textes aveugles.</p>
                         </td>
                       </tr>
                       <tr data-ko-display="buttonVisible">
@@ -1102,7 +1102,7 @@
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
                                 <a data-ko-editable="leftButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                                  -ko-color: @buttonStyle.color; -ko-attr-href: @leftButtonLink.url">BUTTON</a>
+                                  -ko-color: @buttonStyle.color; -ko-attr-href: @leftButtonLink.url">BOUTON</a>
                               </td>
                             </tr>
                           </table>
@@ -1137,7 +1137,7 @@
                         <td align="left" style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                           -ko-font-size: @[longTextStyle.size]px; -ko-font-family: @longTextStyle.face; -ko-color: @longTextStyle.color"
                           data-ko-editable="rightLongText" class="long-text links-color">
-                          <p>Far far away, behind the word mountains, far from the countries <a href="">Vokalia and Consonantia</a>, there live the blind texts.</p>
+                          <p>Loin, derrière le mot montagnes, loin des pays <a href="">Vokalia et Consonantia</a>, là vivent les textes aveugles.</p>
                         </td>
                       </tr>
                       <tr data-ko-display="buttonVisible">
@@ -1151,7 +1151,7 @@
                                 -ko-attr-bgcolor: @buttonStyle.buttonColor; -ko-background-color: @buttonStyle.buttonColor;
                                 -ko-font-size: @[buttonStyle.size]px; -ko-font-family: @buttonStyle.face; -ko-color: @buttonStyle.color; ">
                                 <a data-ko-editable="rightButtonLink.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                                  -ko-color: @buttonStyle.color; -ko-attr-href: @rightButtonLink.url">BUTTON</a>
+                                  -ko-color: @buttonStyle.color; -ko-attr-href: @rightButtonLink.url">BOUTON</a>
                               </td>
                             </tr>
                           </table>
@@ -1228,7 +1228,7 @@
                      -ko-border-radius: @[bigButtonStyle.radius]px;
                     -ko-font-size: @[bigButtonStyle.size]px; -ko-font-family: @bigButtonStyle.face; -ko-color: @bigButtonStyle.color; ">
                     <a data-ko-link="link.url" data-ko-editable="link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                      -ko-color: @bigButtonStyle.color;">BUTTON</a>
+                      -ko-color: @bigButtonStyle.color;">BOUTON</a>
                   </td>
                 </tr>
               </table>
@@ -1267,7 +1267,7 @@
                      -ko-border-radius: @[button1Style.radius]px;
                     -ko-font-size: @[button1Style.size]px; -ko-font-family: @button1Style.face; -ko-color: @button1Style.color; ">
                     <a data-ko-link="button1Link.url" data-ko-editable="button1Link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                      -ko-color: @button1Style.color;">BUTTON 1</a>
+                      -ko-color: @button1Style.color;">BOUTON 1</a>
                   </td>
                   <td width="auto" valign="middle" bgcolor="#3f3f3f" align="center" height="50"
                     style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
@@ -1276,7 +1276,7 @@
                      -ko-border-radius: @[button2Style.radius]px;
                     -ko-font-size: @[button2Style.size]px; -ko-font-family: @button2Style.face; -ko-color: @button2Style.color; ">
                     <a data-ko-link="button2Link.url" data-ko-editable="button2Link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                      -ko-color: @button2Style.color;">BUTTON 2</a>
+                      -ko-color: @button2Style.color;">BOUTON 2</a>
                   </td>
                 </tr>
                 <tr data-ko-display="buttonRow2Visible">
@@ -1287,7 +1287,7 @@
                      -ko-border-radius: @[button3Style.radius]px;
                     -ko-font-size: @[button3Style.size]px; -ko-font-family: @button3Style.face; -ko-color: @button3Style.color; ">
                     <a data-ko-link="button3Link.url" data-ko-editable="button3Link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                      -ko-color: @button3Style.color;">BUTTON 3</a>
+                      -ko-color: @button3Style.color;">BOUTON 3</a>
                   </td>
                   <td width="auto" valign="middle" bgcolor="#3f3f3f" align="center" height="50"
                   style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
@@ -1296,7 +1296,7 @@
                    -ko-border-radius: @[button4Style.radius]px;
                   -ko-font-size: @[button4Style.size]px; -ko-font-family: @button4Style.face; -ko-color: @button4Style.color; ">
                   <a data-ko-link="button4Link.url" data-ko-editable="button4Link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                    -ko-color: @button4Style.color;">BUTTON 4</a>
+                    -ko-color: @button4Style.color;">BOUTON 4</a>
                   </td>
                 </tr>
                 <tr data-ko-display="buttonRow3Visible">
@@ -1307,7 +1307,7 @@
                      -ko-border-radius: @[button5Style.radius]px;
                     -ko-font-size: @[button5Style.size]px; -ko-font-family: @button5Style.face; -ko-color: @button5Style.color; ">
                     <a data-ko-link="button5Link.url" data-ko-editable="button5Link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                      -ko-color: @button5Style.color;">BUTTON 5</a>
+                      -ko-color: @button5Style.color;">BOUTON 5</a>
                   </td>
                   <td width="auto" valign="middle" bgcolor="#3f3f3f" align="center" height="50"
                   style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
@@ -1316,7 +1316,7 @@
                    -ko-border-radius: @[button6Style.radius]px;
                   -ko-font-size: @[button6Style.size]px; -ko-font-family: @button6Style.face; -ko-color: @button6Style.color; ">
                   <a data-ko-link="button6Link.url" data-ko-editable="button6Link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                    -ko-color: @button6Style.color;">BUTTON 6</a>
+                    -ko-color: @button6Style.color;">BOUTON 6</a>
                   </td>
                 </tr>
                 <tr data-ko-display="buttonRow4Visible">
@@ -1327,7 +1327,7 @@
                      -ko-border-radius: @[button7Style.radius]px;
                     -ko-font-size: @[button7Style.size]px; -ko-font-family: @button7Style.face; -ko-color: @button7Style.color; ">
                     <a data-ko-link="button7Link.url" data-ko-editable="button7Link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                      -ko-color: @button7Style.color;">BUTTON 7</a>
+                      -ko-color: @button7Style.color;">BOUTON 7</a>
                   </td>
                   <td width="auto" valign="middle" bgcolor="#3f3f3f" align="center" height="50"
                   style="font-size:22px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;
@@ -1336,7 +1336,7 @@
                    -ko-border-radius: @[button8Style.radius]px;
                   -ko-font-size: @[button8Style.size]px; -ko-font-family: @button8Style.face; -ko-color: @button8Style.color; ">
                   <a data-ko-link="button8Link.url" data-ko-editable="button8Link.text" href="" style="text-decoration: none; color: #ffffff; font-weight: normal;
-                    -ko-color: @button8Style.color;">BUTTON 8</a>
+                    -ko-color: @button8Style.color;">BOUTON 8</a>
                   </td>
                 </tr>
               </table>
