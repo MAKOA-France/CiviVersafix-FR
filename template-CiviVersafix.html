@@ -985,7 +985,7 @@
       }
 
       singleArticleBlock {
-        label: Un article Image et Texte;
+        label: Image + Article + Image;
         properties: titleVisible=true buttonVisible=true imageVisible=true imageWidth=682 titleTextStyle longTextStyle buttonStyle image longText buttonLink;
         theme: contentTheme
       }
@@ -996,7 +996,7 @@
       }
 
       externalBackgroundVisible {
-        label: Fond transparent;
+        label: Arrière-plan visible;
         extend: visible;
       }
 
@@ -1019,7 +1019,7 @@
       logoBlock imageWidth {
         label: Taille image;
         widget: select;
-        options: 166=Petite|258=Moyenne|380=Grande|700=Full;
+        options: 166=Petite|258=Moyenne|341=Grande;
         variant: imageWidth;
         renderHint: buttonset;
       }
@@ -1027,7 +1027,6 @@
       logoBlock {
         label: Logo;
         properties: externalBackgroundVisible=true image imageWidth=258 externalTextStyle;
-        variant: externalBackgroundVisible;
         theme: contentTheme
       }
 
@@ -1631,8 +1630,7 @@
 
                           <tr>
                             <td width="100%" valign="top" align="right"
-                              style="font-weight: normal;  font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
-                      -ko-font-size: @[linkStyle.size]px; -ko-color: @linkStyle.color; -ko-font-family: @linkStyle.face">
+                              style="font-weight: normal; color: #3f3f3f; font-size: 13px; font-family: Arial, Helvetica, sans-serif; text-align: right; -ko-font-size: @[linkStyle.size]px; -ko-font-family: @linkStyle.face; padding: 9px; padding-top: 5px; padding-bottom: 5px; padding: 9px; padding-top: 5px; padding-bottom: 5px; -ko-padding: @[blockSpacing.horizontalSpacing]px; -ko-padding-top: @[blockSpacing.verticalSpacing]px; -ko-padding-bottom: @[blockSpacing.verticalSpacing]px;"
                               <a
                                 style="color: #3f3f3f; text-decoration: underline;
                         -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration"
@@ -1665,43 +1663,55 @@
     <div data-ko-container="main" data-ko-wrap="false">
 
       <!-- logoBlock -->
-      <table class="vb-outer" width="100%" cellpadding="0" border="0"
+      <table role="presentation" class="vb-outer" width="100%" cellpadding="0" border="0"
         cellspacing="0" bgcolor="#ffffff"
         style="background-color: #ffffff; -ko-background-color: @externalBackgroundColor; -ko-attr-bgcolor: @externalBackgroundColor"
         data-ko-block="logoBlock">
         <tr>
-          <td class="vb-outer" align="center" valign="top" bgcolor="#ffffff"
-            style="background-color: #ffffff; -ko-background-color: @externalBackgroundColor; -ko-attr-bgcolor: @externalBackgroundColor">
+          <td class="vb-outer" align="center" valign="top"
+            style="padding-left: 9px; padding-right: 9px; font-size: 0">
+            <div data-ko-wrap="false" style="width: 100%;"
+              data-ko-display="externalBackgroundVisible">
+              <!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="700"><tr><td align="center" valign="top"><![endif]--><!--
+                -->
+              <div style="margin: 0 auto; max-width: 700px; -mru-width: 0px">
+                <table role="presentation" class="vb-row" border="0" cellpadding="0"
+                  cellspacing="9"
+                  style="border-collapse: collapse; width: 100%; max-width: 700px; -mru-width: 0px"
+                  width="700">
 
-            <!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="700"><tr><td align="center" valign="top"><![endif]-->
-            <div class="oldwebkit">
-              <table width="700" style="width: 100%; max-width: 700px"
-                border="0" cellpadding="0" cellspacing="18"
-                class="vb-container fullpad">
-                <tr>
-                  <td valign="top" align="center">
+                  <tr>
+                    <td align="center" valign="top"
+                      style="font-size: 0; padding: 0 9px; padding-top: 13px; padding-bottom: 13px; -ko-padding-top: @[blockSpacing.topPadding]px; -ko-padding-bottom: @[blockSpacing.bottomPadding]px;">
+                      <div
+                        style="vertical-align:top; width:100%; max-width: 341px; -mru-width: 0px; -ko-max-width: @[2 * blockSpacing.horizontalSpacing + Math.round(imageWidth) + 'px']"><!--
+                          -->
+                        <table role="presentation" border="0" cellspacing="9" cellpadding="0"
+                          style="border-collapse: collapse; width: 100%; -ko-attr-width: @[2 * blockSpacing.horizontalSpacing + Math.round(imageWidth)]"
+                          width="341">
 
-                    <!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="258" style="-ko-attr-width: @[imageWidth]"><tr><td align="center" valign="top"><![endif]-->
-                    <div
-                      style="display:inline-block; max-width:258px; -ko-max-width: @[imageWidth]px; vertical-align:top; width:100%;"
-                      class="mobile-full">
-                      <a data-ko-link="image.url" href=""
-                        style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #ffffff;
-                      text-decoration: none; -ko-font-size: @[externalTextStyle.size]px;
-                      -ko-font-family: @externalTextStyle.face; -ko-color: @externalTextStyle.color"><img
-                          data-ko-editable="image.src" width="258"
-                          data-ko-placeholder-height="150"
-                          style="-ko-attr-alt: @image.alt; width: 100%; max-width: 258px; -ko-attr-width: @imageWidth; -ko-max-width: @[imageWidth]px;"
-                          src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=258%2C150"
-                          vspace="0" hspace="0" border="0" alt="" /></a>
-                    </div>
-                    <!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+                          <tr>
+                            <td width="100%" valign="top" align="center" class="links-color"
+                              style="padding: 9px; padding-top: 5px; padding-bottom: 5px; padding: 9px; padding-top: 5px; padding-bottom: 5px; -ko-padding: @[blockSpacing.horizontalSpacing]px; -ko-padding-top: @[blockSpacing.verticalSpacing]px; -ko-padding-bottom: @[blockSpacing.verticalSpacing]px;">
+                              <!--[if (lte ie 8)]><div style="display: inline-block; width: 258px; -mru-width: 0px; -ko-width: @[imageWidth]px"><![endif]--><a
+                                href="" style="display: inline-block;"
+                                data-ko-link="image.url"><img alt="" border="0" hspace="0"
+                                  align="center" vspace="0"
+                                  style="vertical-align:top; height: auto; margin: 0 auto; color: #f3f3f3; font-size: 18px; font-family: Arial, Helvetica, sans-serif; -ko-font-size: @[externalTextStyle.size]px; -ko-color: @externalTextStyle.color; -ko-font-family: @externalTextStyle.face; -ko-attr-alt: @image.alt; -ko-attr-alt-if: image.alt !== ''; width: 100%; max-width: 258px; -ko-attr-width: @[imageWidth]; -ko-max-width: @[imageWidth]px; height: auto"
+                                  data-ko-editable="image.src" width="258"
+                                  data-ko-placeholder-height="150"
+                                  src="https://mosaico.io/srv/f-default/img?method=placeholder&amp;params=258%2C150"></a><!--[if (lte ie 8)]></div><![endif]-->
+                            </td>
+                          </tr>
 
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+
+                  </table>
+                  </div><!--
+                      --><!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
 
           </td>
         </tr>
