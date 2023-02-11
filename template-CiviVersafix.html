@@ -13,6 +13,9 @@
   <meta name="viewport" content="initial-scale=1.0" />
   <meta name="format-detection" content="telephone=no" />
   <title style="-ko-bind-text: @titleText">[subject]</title>
+  <!--[if !mso]><!-- -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet" type="text/css" />
+  <!--<![endif]-->
   <style type="text/css">
     @supports -ko-blockdefs {
       id { widget: id }
@@ -20,12 +23,12 @@
       visible { label: Visible ?; widget: boolean }
       color { label: Couleur; widget: color }
       radius {
-        label: Rayon angle;
+        label: Arrondir les angles ;
         widget: integer;
         max: 20;
         help: "Attention - cette propriété n'est pas supportée sur tous les clients de messagerie (comme Outlook)";
       }
-      face { label: Police; widget: select; options: Arial, Helvetica, sans-serif=Arial|Arial Black, Arial Black, Gadget, sans-serif=Arial Black|Comic Sans MS, Comic Sans MS5, cursive=Comic Sans|Courier New, Courier New, monospace=Courier|Georgia, serif=Georgia|Impact, sans-serif=Impact|Lucida Console, Monaco, monospace=Lucida Console|Lucida Sans Unicode, Lucida Grande, sans-serif=Lucida Sans Unicode|Times New Roman, Times, serif=Times New Roman|Verdana, Geneva, sans-serif=Verdana}
+      face { label: Police; widget: select; options:  Open Sans, Calibri, Arial, Helvetica, sans-serif=Open Sans|Calibri, Arial, Arial Black, Gadget, sans-serif=Arial Black|Comic Sans MS, Comic Sans MS5, cursive=Comic Sans|Courier New, Courier New, monospace=Courier|Georgia, serif=Georgia|Impact, sans-serif=Impact|Lucida Console, Monaco, monospace=Lucida Console|Lucida Sans Unicode, Lucida Grande, sans-serif=Lucida Sans Unicode|Times New Roman, Times, serif=Times New Roman|Verdana, Geneva, sans-serif=Verdana}
       decoration { label: Décoration; widget: select; options: none=Aucun|underline=Sous-ligné }
       linksColor { label: Couleur du lien; extend: color }
       linksDecoration { label: Liens sous-lignés ?; extend: decoration }
@@ -47,7 +50,7 @@
       }
       sponsor { label: Sponsor; properties: visible=true src url alt; category: hidden }
       titleText {label:Texte du titre;category: hidden;}
-      gutterVisible { label: Afficher la goutière; extend: visible }
+      gutterVisible { label: Laisser une marge; extend: visible }
       socialIconType { label: Version icône;widget: select; options:bw=Noir et blanc|colors=Couleur; }
       preheaderLinkOption {
         label: Lien de désinscription;
@@ -62,7 +65,7 @@
       blocks { label: Blocs; properties: blocks[]; }
       link { label: Lien; properties: text url }
       image { label: Image; properties: src url alt }
-      backgroundColor { label: Couleur arrière-plan; extend: color }
+      backgroundColor { label: Couleur Fond de Bloc; extend: color }
       buttonLink { label: Bouton; extend: link }
       /* texts and links */
       textStyle { label: Texte; properties: face color size }
@@ -95,46 +98,126 @@
       rightImage { label: Image de droite; extend: image }
       rightLongText { label: Texte de droite; extend: text }
       rightButtonLink { label: Bouton de droite; extend: buttonLink }
-      webversionText{ label: Texte du lien web; extend: text;}
+      webversionText{ label: Texte de la version web; extend: text;}
       unsubscribeText{ label: Lien de désinscription; extend: text;}
 
-      titleVisible { label: Afficher le titre; extend: visible; }
-      buttonVisible { label: Afficher le bouton; extend: visible; }
-      imageVisible { label: Afficher image; extend: visible; }
-      imageAboveVisible { label: Image au dessus; extend: visible;}
-      imageBelowVisible { label: Image en dessous; extend: visible;}
+      titleVisible { label: Afficher les titres; extend: visible; }
+      buttonVisible { label: Afficher les boutons; extend: visible; }
+      imageVisible { label: Afficher les images; extend: visible; }
+      imageAboveVisible { label: Image du dessus; extend: visible;}
+      imageBelowVisible { label: Image du dessous; extend: visible;}
 
       contentTheme { label: Style principal; }
       contentTheme:preview { -ko-background-color: @[backgroundColor] }
       frameTheme { label: Style du cadre; }
       frameTheme:preview { -ko-background-color: @[backgroundColor] }
-      template preheaderText { label: Avant-en-tête; }
+      template preheaderText { label: Pré-en-tête; }
 
       template { label: Page; theme: frameTheme ;properties:  preheaderVisible=true; version: 1.0.5; }
 
       footerBlock unsubscribeLinkStyle { label: Se désinscrire;  }
-      footerBlock { label: Désinscription Block; theme: frameTheme }
+      footerBlock { label: Bloc Désinscription; theme: frameTheme }
 
-      buttonRow1Visible { label: Row 1 Visible; extend: visible;}
-      buttonRow2Visible { label: Row 2 Visible; extend: visible;}
-      buttonRow3Visible { label: Row 3 Visible; extend: visible;}
-      buttonRow4Visible { label: Row 4 Visible; extend: visible;}
-      button1Link { label: Button 1 Link; extend: buttonLink }
-      button2Link { label: Button 2 Link; extend: buttonLink }
-      button3Link { label: Button 3 Link; extend: buttonLink }
-      button4Link { label: Button 4 Link; extend: buttonLink }
-      button5Link { label: Button 5 Link; extend: buttonLink }
-      button6Link { label: Button 6 Link; extend: buttonLink }
-      button7Link { label: Button 7 Link; extend: buttonLink }
-      button8Link { label: Button 8 Link; extend: buttonLink }
-      button1Style { label: Button 1; extend: buttonStyle }
-      button2Style { label: Button 2; extend: buttonStyle }
-      button3Style { label: Button 3; extend: buttonStyle }
-      button4Style { label: Button 4; extend: buttonStyle }
-      button5Style { label: Button 5; extend: buttonStyle }
-      button6Style { label: Button 6; extend: buttonStyle }
-      button7Style { label: Button 7; extend: buttonStyle }
-      button8Style { label: Button 8; extend: buttonStyle }
+      buttonRow1Visible {
+        label: Afficher la ligne 1;
+        extend: visible;
+      }
+
+      buttonRow2Visible {
+        label:  Afficher la ligne 2;
+        extend: visible;
+      }
+
+      buttonRow3Visible {
+        label:  Afficher la ligne 3;
+        extend: visible;
+      }
+
+      buttonRow4Visible {
+        label:  Afficher la ligne 4;
+        extend: visible;
+      }
+
+      button1Link {
+        label: Bouton 1;
+        extend: buttonLink
+      }
+
+      button2Link {
+        label: Bouton 2;
+        extend: buttonLink
+      }
+
+      button3Link {
+        label: Bouton 3;
+        extend: buttonLink
+      }
+
+      button4Link {
+        label: Bouton 4;
+        extend: buttonLink
+      }
+
+      button5Link {
+        label: Bouton 5;
+        extend: buttonLink
+      }
+
+      button6Link {
+        label: Bouton 6;
+        extend: buttonLink
+      }
+
+      button7Link {
+        label: Bouton 7;
+        extend: buttonLink
+      }
+
+      button8Link {
+        label: Bouton 8;
+        extend: buttonLink
+      }
+
+      button1Style {
+        label: Bouton 1;
+        extend: buttonStyle
+      }
+
+      button2Style {
+        label: Bouton 2;
+        extend: buttonStyle
+      }
+
+      button3Style {
+        label: Bouton 3;
+        extend: buttonStyle
+      }
+
+      button4Style {
+        label: Bouton 4;
+        extend: buttonStyle
+      }
+
+      button5Style {
+        label: Bouton 5;
+        extend: buttonStyle
+      }
+
+      button6Style {
+        label: Bouton 6;
+        extend: buttonStyle
+      }
+
+      button7Style {
+        label: Bouton 7;
+        extend: buttonStyle
+      }
+
+      button8Style {
+        label: Bouton 8;
+        extend: buttonStyle
+      }
+
 
       socialBlock fbVisible { label: Facebook; }
       socialBlock twVisible { label: Twitter }
@@ -146,6 +229,7 @@
       socialBlock youVisible { label: YouTube }
       socialBlock fbUrl { label: Lien Facebook }
       socialBlock twUrl { label: Lien Twitter}
+
       socialBlock inUrl { label: Lien LinkedIn}
       socialBlock flUrl { label: Lien Flickr}
       socialBlock viUrl { label: Lien Vimeo}
@@ -154,7 +238,7 @@
       socialBlock youUrl { label: Lien YouTube}
       socialBlock {
         label: Bloc Réseaux Sociaux;
-        properties: socialIconType=colors fbVisible=true fbUrl twVisible=true twUrl webVisible=false webUrl inVisible=false inUrl flVisible=false flUrl viVisible=false viUrl instVisible=false instUrl youVisible=false youUrl backgroundColor;
+        properties: socialIconType=colors fbVisible=true fbUrl twVisible=true twUrl webVisible=false webUrl inVisible=false inUrl flVisible=false flUrl viVisible=false viUrl instVisible=false instUrl youVisible=false youUrl longTextStyle longText backgroundColor;
         variant:socialIconType;
         theme: frameTheme
       }
@@ -198,10 +282,10 @@
       }
       tripleImageBlock { label: Bloc triple image;properties:gutterVisible=false;variant:gutterVisible; theme: contentTheme}
 
-      buttonBlock { label: Bloc bouton; theme: contentTheme}
+      buttonBlock { label: Bloc Bouton; theme: contentTheme}
       multiButtonBlock { label: Bloc multi boutons; properties: backgroundColor buttonRow1Visible=true buttonRow2Visible=true buttonRow3Visible=true buttonRow4Visible=true button1Link button2Link button3Link button4Link button5Link button6Link button7Link button8Link button1Style button2Style button3Style button5Style button6Style button7Style button8Style; theme: contentTheme}
       hrBlock { label: Bloc séparateur;  theme: contentTheme}
-      spacerBlock { label: Bloc espaceur;  theme: contentTheme}
+      spacerBlock { label: Bloc espace vide; properties: hrHeight;  theme: contentTheme}
 
       spacerBlock:preview,
       logoBlock:preview { -ko-background-color: @[externalBackgroundColor] }
@@ -397,6 +481,7 @@
     [data-ko-block=sideArticleBlock] .long-text p { Margin: 1em 0px; }
     [data-ko-block=sideArticleBlock] .long-text p:last-child { Margin-bottom: 0px; }
     [data-ko-block=sideArticleBlock] .long-text p:first-child { Margin-top: 0px; }
+
 
     [data-ko-block=footerBlock] .links-color a,
     [data-ko-block=footerBlock] .links-color a:link,
@@ -679,7 +764,7 @@
               <td style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;
                 -ko-font-size: @[titleTextStyle.size]px; -ko-font-family: @titleTextStyle.face; -ko-color: @titleTextStyle.color">
                 <span style="color: #3f3f3f; -ko-color: @titleTextStyle.color" data-ko-editable="text">
-               Section du titre
+               Titre de section
                 </span>
               </td>
             </tr>
@@ -749,7 +834,7 @@
               style="background-color: #ffffff; font-size: 22px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: center;
               -ko-attr-align: @bigTitleStyle.align; -ko-attr-bgcolor: @backgroundColor; -ko-background-color: @backgroundColor;
               -ko-font-size: @[bigTitleStyle.size]px; -ko-font-family: @bigTitleStyle.face; -ko-color: @bigTitleStyle.color; -ko-text-align: @bigTitleStyle.align">
-              <span data-ko-editable="text">Section de titre</span>
+              <span data-ko-editable="text">Titre de Section</span>
             </td>
           </tr>
         </table>
@@ -903,7 +988,7 @@
                       <tr data-ko-display="titleVisible">
                         <td style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;
                           -ko-font-size: @[titleTextStyle.size]px; -ko-font-family: @titleTextStyle.face; -ko-color: @titleTextStyle.color">
-                          <span style="color: #3f3f3f; -ko-color: @titleTextStyle.color" data-ko-editable="leftTitleText">Title
+                          <span style="color: #3f3f3f; -ko-color: @titleTextStyle.color" data-ko-editable="leftTitleText">Titre
                           </span>
                         </td>
                       </tr>
@@ -953,7 +1038,7 @@
                         <td style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;
                           -ko-font-size: @[titleTextStyle.size]px; -ko-font-family: @titleTextStyle.face; -ko-color: @titleTextStyle.color">
                           <span style="color: #3f3f3f; -ko-color: @titleTextStyle.color"  data-ko-editable="middleTitleText">
-                         Title
+                         Titre
                           </span>
                         </td>
                       </tr>
@@ -1129,7 +1214,7 @@
                         <td style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;
                           -ko-font-size: @[titleTextStyle.size]px; -ko-font-family: @titleTextStyle.face; -ko-color: @titleTextStyle.color">
                           <span style="color: #3f3f3f; -ko-color: @titleTextStyle.color" data-ko-editable="rightTitleText">
-                         Title
+                         Titre
                           </span>
                         </td>
                       </tr>
