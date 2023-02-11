@@ -54,7 +54,7 @@
       face {
         label: Police;
         widget: select;
-        options:  Open Sans, Calibri, Arial, Helvetica, sans-serif=Open Sans|Calibri, Arial, Arial Black, Gadget, sans-serif=Arial Black|Comic Sans MS, Comic Sans MS5, cursive=Comic Sans|Courier New, Courier New, monospace=Courier|Georgia, serif=Georgia|Impact, sans-serif=Impact|Lucida Console, Monaco, monospace=Lucida Console|Lucida Sans Unicode, Lucida Grande, sans-serif=Lucida Sans Unicode|Times New Roman, Times, serif=Times New Roman|Verdana, Geneva, sans-serif=Verdana;
+        options: Open Sans, Calibri, Arial, Helvetica, sans-serif=Open Sans|Calibri, Arial, Arial Black, Gadget, sans-serif=Arial Black|Comic Sans MS, Comic Sans MS5, cursive=Comic Sans|Courier New, Courier New, monospace=Courier|Georgia, serif=Georgia|Impact, sans-serif=Impact|Lucida Console, Monaco, monospace=Lucida Console|Lucida Sans Unicode, Lucida Grande, sans-serif=Lucida Sans Unicode|Times New Roman, Times, serif=Times New Roman|Verdana, Geneva, sans-serif=Verdana;
         renderHint: fontface
       }
 
@@ -116,6 +116,7 @@
         label: Hauteur image;
         extend: height;
       }
+
       lineHeight {
         label: Line Height;
         widget: select;
@@ -1275,7 +1276,7 @@
     .ExternalClass {
       width: 100%;
       background-color: #fafafa;
-      -ko-background-color:  @[_theme_.frameTheme.backgroundColor]
+      -ko-background-color: @[_theme_.frameTheme.backgroundColor]
     }
 
     /* outlook/office365 add buttons outside not-linked images and safari have 2px margin */
@@ -1441,6 +1442,17 @@
       Margin-top: 0px;
     }
 
+
+    [data-ko-block=sideImageBlock] .links-color a,
+    [data-ko-block=sideImageBlock] .links-color a:link,
+    [data-ko-block=sideImageBlock] .links-color a:visited,
+    [data-ko-block=sideImageBlock] .links-color a:hover {
+      color: #3f3f3f;
+      -ko-color: @longTextStyle.linksColor;
+      text-decoration: underline;
+    }
+
+
     [data-ko-block=footerBlock] .links-color a,
     [data-ko-block=footerBlock] .links-color a:link,
     [data-ko-block=footerBlock] .links-color a:visited,
@@ -1547,9 +1559,9 @@
     <div data-ko-display="preheaderVisible" data-ko-wrap="false">
 
 
-    <!-- preheaderBlock -->
-      <table role="presentation" class="vb-outer" width="100%" cellpadding="0" border="0"
-        cellspacing="0" bgcolor="#fafafa"
+      <!-- preheaderBlock -->
+      <table role="presentation" class="vb-outer" width="100%" cellpadding="0"
+        border="0" cellspacing="0" bgcolor="#fafafa"
         style="background-color: #fafafa; -ko-background-color:  @[backgroundColor]; -ko-attr-bgcolor: @[backgroundColor]"
         data-ko-block="preheaderBlock">
         <tr>
@@ -1557,92 +1569,98 @@
             style="padding-left: 9px; padding-right: 9px; font-size: 0">
             <div data-ko-display="preheaderLinkOption neq 'none'" style="display: none; font-size:1px; line-height: 1px; max-height:0px; max-width: 0px; opacity: 0; overflow: hidden;
           -ko-bind-text: @preheaderText"></div>
-                      <!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="700"><tr><td align="center" valign="top"><![endif]--><!--
+            <!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="700"><tr><td align="center" valign="top"><![endif]--><!--
                             -->
-                      <div style="margin: 0 auto; max-width: 700px; -mru-width: 0px">
-                        <table role="presentation" class="vb-row" border="0"
-                          cellpadding="0"
-                          cellspacing="0"
-                          style="border-collapse: collapse; width: 100%; max-width: 700px; -mru-width: 0px"
-                          width="700">
+            <div style="margin: 0 auto; max-width: 700px; -mru-width: 0px">
+              <table role="presentation" class="vb-row" border="0"
+                cellpadding="0" cellspacing="0"
+                style="border-collapse: collapse; width: 100%; max-width: 700px; -mru-width: 0px"
+                width="700">
 
                 <tr>
                   <td align="center" valign="top"
                     style="font-size: 0; padding: 0 9px; padding-top: 4px; padding-bottom: 4px; -ko-padding-top: @[blockSpacing.topPadding]px; -ko-padding-bottom: @[blockSpacing.bottomPadding]px;">
                     <div style="width:100%; max-width: 682px; -mru-width: 0px">
-                    <!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="682"><tr><![endif]-->
+                      <!--[if (gte mso 9)|(lte ie 8)]><table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" width="682"><tr><![endif]-->
                       <!-- -->
                       <!-- -->
-                        <!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" width="341"><![endif]-->
+                      <!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" width="341"><![endif]-->
                       <!-- -->
-                 <div
+                      <div
                         style="display:inline-block; vertical-align:top; width: 100%; max-width: 276px; -mru-width: 0px; min-width: calc(341 * 100% / 682); -ko-min-width: @['calc(' + (341) * 100 / 682 + '%)']; max-width: calc(100%); -ko-max-width: @['calc(100%)']; width: calc(341 * 682px - 682 * 100%); -ko-width: @['calc('+ 682 * 682 + 'px - ' + 682 * 100 +'%)']"
-                      class="mobile-full"><!-- -->
+                        class="mobile-full"><!-- -->
                         <table role="presentation" border="0" cellspacing="9"
-                        cellpadding="0"
+                          cellpadding="0"
                           style="border-collapse: collapse; width: 100%; -yandex-p: calc(2px - 3%)"
                           width="341" align="left">
 
                           <tr data-ko-display="preheaderLinkOption neq 'none'">
-                          <td width="100%" valign="top" align="left"
-                            style="font-weight: normal; text-align:left; font-size: 13px;
+                            <td width="100%" valign="top" align="left"
+                              style="font-weight: normal; text-align:left; font-size: 13px;
                           font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                           -ko-font-size: @[linkStyle.size]px; -ko-color: @linkStyle.color; -ko-font-family: @[linkStyle.face]; padding: 9px; padding-top: 5px; padding-bottom: 5px; padding: 9px; padding-top: 5px; padding-bottom: 5px; -ko-padding: @[blockSpacing.horizontalSpacing]px; -ko-padding-top: @[blockSpacing.verticalSpacing]px; -ko-padding-bottom: @[blockSpacing.verticalSpacing]px;">
-                            <a data-ko-display="preheaderLinkOption neq 'none'"
-                              data-ko-editable="unsubscribeText"
-                              href="[unsubscribe_link]"
-                              style="text-decoration: underline; color: #3f3f3f; -ko-attr-href: @preheaderLinkOption;
+                              <a data-ko-display="preheaderLinkOption neq 'none'"
+                                data-ko-editable="unsubscribeText"
+                                href="[unsubscribe_link]"
+                                style="text-decoration: underline; color: #3f3f3f; -ko-attr-href: @preheaderLinkOption;
                              -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration">Se
-                              désinscrire</a>
-                            <span
-                              data-ko-display="preheaderLinkOption eq 'none'"
-                              style="font-size: 13px;color: #3f3f3f; font-weight: normal; text-align:center;
-                             font-family: Arial, Helvetica, sans-serif; -ko-font-size: @[longTextStyle.size]px; -ko-color: @longTextStyle.color;
-                            -ko-font-family: @longTextStyle.face; -ko-bind-text: @preheaderText; display: none"></span>
-                          </td>
-                        </tr>
-                      </table>
-                    </div><!--[if (gte mso 9)|(lte ie 8)]>
-</td><td align="left" valign="top" width="341">
+                                désinscrire</a>
+                            </td>
+                          </tr>
+                          <tr data-ko-display="preheaderLinkOption eq 'none'"
+                            style="display: none">
+                            <td width="100%" valign="top"
+                               style="font-weight: normal; color: #3f3f3f;  font-size: 13px; font-family: Arial, Helvetica, sans-serif; padding: 9px; padding-top: 5px; padding-bottom: 5px; padding: 9px; padding-top: 5px; padding-bottom: 5px; -ko-padding: @[blockSpacing.horizontalSpacing]px; -ko-padding-top: @[blockSpacing.verticalSpacing]px; -ko-padding-bottom: @[blockSpacing.verticalSpacing]px; text-align: left; -ko-font-size: @[longTextStyle.size]px; -ko-color: @longTextStyle.color; -ko-font-family: @longTextStyle.face; -ko-text-align: @longTextStyle.align; -ko-attr-align: @longTextStyle.align"
+                              align="left"><span
+                                style="font-weight: normal; -ko-bind-text: @preheaderText"></span>
+                            </td>
+                          </tr>
+                        </table><!--
+                              -->
+                        </div>
+                        <!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--><!--
+                                  --><!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" width="341">
 <![endif]-->
                     <div
-                      style="display:inline-block; max-width:341px; vertical-align:top; width:100%;"
-                      class="mobile-full mobile-hide">
+                      style="display:inline-block; vertical-align:top; width: 100%; max-width: 341px; -mru-width: 0px; min-width: calc(341 * 100% / 682); -ko-min-width: @['calc(' + (341) * 100 / 682 + '%)']; max-width: calc(100%); -ko-max-width: @['calc(100%)']; width: calc(682 * 682px - 682 * 100%); -ko-width: @['calc('+ 682 * 682 + 'px - ' + 682 * 100 +'%)']"
+                      class="mobile-full mobile-hide"><!--
+                            -->
+                      <table role="presentation" border="0" cellspacing="9" cellpadding="0"
+                        style="border-collapse: collapse; width: 100%; -yandex-p: calc(2px - 3%)"
+                        width="341" align="left">
 
-                      <table class="vb-content" border="0" cellspacing="9"
-                        cellpadding="0" width="341"
-                        style="width: 100%; text-align: right;" align="left">
-                        <tr>
-                          <td width="100%" valign="top"
-                            style="font-weight: normal;  font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
+                          <tr>
+                            <td width="100%" valign="top" align="right"
+                              style="font-weight: normal;  font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #3f3f3f;
                       -ko-font-size: @[linkStyle.size]px; -ko-color: @linkStyle.color; -ko-font-family: @linkStyle.face">
-                            <span
-                              style="color: #3f3f3f; text-decoration: underline;
-                        -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration">
-                              <a data-ko-editable="webversionText"
-                                href="[show_link]"
-                                style="text-decoration: underline; color: #3f3f3f;
-                           -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration">Voir
-                                dans le navigateur</a>
-                            </span>
-                          </td>
-                        </tr>
-                      </table>
+                              <a
+                                style="color: #3f3f3f; text-decoration: underline;
+                        -ko-color: @linkStyle.color; -ko-text-decoration: @linkStyle.decoration"
+                                 data-ko-editable="webversionText"
+                                  href="[show_link]">Voir
+                                  dans le navigateur</a>
+                            </td>
+                          </tr>
 
-                    </div><!--[if (gte mso 9)|(lte ie 8)]>
-</td></tr></table><![endif]-->
-
+                        </table><!--
+      -->
+                      </div><!--[if (gte mso 9)|(lte ie 8)]></td><![endif]--><!--
+        --><!--
+      --><!--[if (gte mso 9)|(lte ie 8)]></tr></table><![endif]-->
+                    </div>
                   </td>
                 </tr>
+
               </table>
-            </div>
-            <!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
+            </div><!--
+    --><!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
           </td>
         </tr>
       </table>
+      <!-- /preheaderBlock -->
+
 
     </div>
-    <!-- /preheaderBlock -->
 
     <div data-ko-container="main" data-ko-wrap="false">
 
