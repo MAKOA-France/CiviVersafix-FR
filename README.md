@@ -18,7 +18,7 @@ Si vous avez des idées d'améliorations, il y a encore des paramètres configur
 
 ## Les blocs
 
-Sur la base de Mosaico Versafix-1 template 0.18.9 et du travail de @homotechsual entre autres :
+Sur la base de Mosaico Versafix-1 template 1.3.4 et du patch 0.18.9 et du travail de @homotechsual entre autres :
 
 1. Bloc de texte centré (testé sur Outlook et Gmail)
 
